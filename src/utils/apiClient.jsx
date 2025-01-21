@@ -1,10 +1,12 @@
 import axios from "axios";
-const API_KEY = import.meta.env.VITE_API_KEY;
-console.log(API_KEY);
+const apiKey = import.meta.env.VITE_API_KEY;
 
-export default axios.create({
+const apiClient = axios.create({
   baseURL: "https://api.thecatapi.com/v1",
   headers: {
-    "x-api-key": API_KEY,
+    "Content-Type": "application/json",
+    "x-api-key": apiKey,
   },
 });
+
+export default apiClient;

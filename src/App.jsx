@@ -6,8 +6,14 @@ import WelcomeText from "./components/WelcomeText";
 
 const App = () => {
   const initialLoad = async () => {
-    const response = await apiClient.get("/images/0XYvRd7oD");
-    console.log(response.data);
+    try {
+      const response = await apiClient.get(
+        "/images/search?size=med&mime_types=jpg&format=json&has_breeds=true&order=RANDOM&page=0&limit=40"
+      );
+      // console.log(response.data);
+    } catch (error) {
+      console.log({ error: error.message });
+    }
   };
 
   useEffect(() => {
