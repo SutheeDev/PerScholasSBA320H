@@ -1,6 +1,8 @@
 import { useEffect } from "react";
 import apiClient from "./utils/apiClient";
 import Navbar from "./components/Navbar";
+import ColumnImages from "./components/ColumnImages";
+import WelcomeText from "./components/WelcomeText";
 
 const App = () => {
   const initialLoad = async () => {
@@ -16,14 +18,14 @@ const App = () => {
     <main>
       <Navbar />
       <div className="gallery">
-        <div>
-          <div className="column">
-            <img />
+        <div className="gallery-container">
+          <div className="columns">
+            <ColumnImages />
+            <ColumnImages />
+            <ColumnImages />
+            <ColumnImages />
           </div>
-        </div>
-        <div className="hero-text-container">
-          <h1 className="hero-text">Endless Cat</h1>
-          <h1 className="hero-text">Endless Joy</h1>
+          <WelcomeText />
         </div>
       </div>
     </main>
