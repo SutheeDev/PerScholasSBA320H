@@ -1,5 +1,6 @@
 import { useEffect } from "react";
 import apiClient from "./utils/apiClient";
+import Navbar from "./components/Navbar";
 
 const App = () => {
   const initialLoad = async () => {
@@ -13,10 +14,7 @@ const App = () => {
 
   return (
     <main>
-      <nav className="navbar">
-        <h1 className="logo">Purrtraits</h1>
-        <button className="btn">Change breeds</button>
-      </nav>
+      <Navbar />
       <div className="gallery">
         <div>
           <div className="column">
