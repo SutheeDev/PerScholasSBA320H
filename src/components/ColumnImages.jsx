@@ -3,10 +3,9 @@ import Image from "./Image";
 const ColumnImages = ({ imgGroup }) => {
   return (
     <div className="column">
-      <Image />
-      <Image />
-      <Image />
-      <Image />
+      {imgGroup.map((obj, index) => (
+        <Image key={index} catObj={obj} />
+      ))}
     </div>
   );
 };
