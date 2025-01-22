@@ -1,6 +1,6 @@
 import Image from "./Image";
 
-const ColumnImages = () => {
+const ColumnImages = ({ imgGroup }) => {
   return (
     <div className="column">
       <Image />
