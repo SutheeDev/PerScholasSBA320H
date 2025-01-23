@@ -16,7 +16,7 @@ export default ColumnImages;
 
 const Wrapper = styled.div`
   .column {
-    width: 250px;
+    width: 400px;
     display: flex;
     flex-direction: column;
     gap: 20px;

@@ -16,13 +16,12 @@ const Navbar = () => {
 export default Navbar;
 
 const Wrapper = styled.nav`
+  min-height: 10vh;
   background-color: #fcec52;
-  position: relative;
+  position: sticky;
+  top: 0;
   z-index: 5;
-  box-shadow: 0px 1.5px 1.4px rgba(0, 0, 0, 0.02),
-    0px 3.7px 3.4px rgba(0, 0, 0, 0.028), 0px 7px 6.4px rgba(0, 0, 0, 0.035),
-    0px 12.5px 11.4px rgba(0, 0, 0, 0.042),
-    0px 23.4px 21.3px rgba(0, 0, 0, 0.05), 0px 56px 51px rgba(0, 0, 0, 0.07);
+
   .navbar-container {
     padding: 5px 30px;
     display: flex;

@@ -11,8 +11,9 @@ const App = () => {
   const fetchImages = async () => {
     try {
       const response = await apiClient.get(
-        "/images/search?size=small&mime_types=jpg&format=json&has_breeds=true&order=RANDOM&page=0&limit=40"
+        "/images/search?size=small&mime_types=jpg&format=json&has_breeds=true&order=RANDOM&page=0&limit=16"
       );
+      console.log(response.data);
       setCats(response.data);
     } catch (error) {
       console.log({ error: error.message });
@@ -23,8 +24,8 @@ const App = () => {
     fetchImages();
   }, []);
 
-  const groupSize = 10;
-  const columns = 4;
+  const groupSize = 8;
+  const columns = 2;
   const imgGroups = Array.from({ length: columns }, (_, index) =>
     cats.slice(index * groupSize, index * groupSize + groupSize)
   );
@@ -50,27 +51,35 @@ export default App;
 const Wrapper = styled.main`
   width: 100vw;
   height: 100vh;
-  /* overflow: hidden; */
-  background-color: #cfffb3;
+  overflow: hidden;
+  /* background-color: #cfffb3; */
+  background-color: #fcec52;
 
   .gallery {
     margin: 0 auto;
   }
 
   .gallery-container {
-    padding: 0 30px;
-    display: grid;
-    place-items: center;
+    padding: 30px 30px;
+    /* display: grid;
+    place-items: center; */
+
+    position: relative;
   }
 
   .columns {
-    height: 100vh;
+    min-height: 90vh;
     display: flex;
     gap: 30px;
-    position: relative;
+    /* position: relative; */
+    position: absolute;
+    top: 30px;
+    left: 50%;
+    transform: translateX(-50%);
     z-index: 3;
+    /* background-color: red; */
 
-    grid-area: 1/1;
+    /* grid-area: 1/1; */
     /* visibility: hidden; */
   }
 `;
