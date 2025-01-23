@@ -51,7 +51,18 @@ const Wrapper = styled.main`
   width: 100vw;
   height: 100vh;
   overflow: hidden;
+  background-color: #cfffb3;
+  .gallery {
+    display: grid;
+    place-items: center;
+  }
+
+  .gallery-container {
+    padding: 0 30px;
+  }
+
   .columns {
     display: flex;
+    gap: 15px;
   }
 `;

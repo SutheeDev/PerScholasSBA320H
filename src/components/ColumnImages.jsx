@@ -16,6 +16,9 @@ export default ColumnImages;
 
 const Wrapper = styled.div`
   .column {
-    width: 300px;
+    width: 250px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
   }
 `;

@@ -19,7 +19,4 @@ const PawIcon = () => {
 };
 export default PawIcon;
 
-const Wrapper = styled.svg`
-  /* background-color: wheat;
-  transform: scale(0.7); */
-`;
+const Wrapper = styled.svg``;
