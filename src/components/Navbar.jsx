@@ -1,11 +1,45 @@
+import PawIcon from "./PawIcon";
+import styled from "styled-components";
+
 const Navbar = () => {
   return (
-    <nav className="navbar">
+    <Wrapper className="navbar">
       <div className="navbar-container">
         <h1 className="logo">Purrtraits</h1>
-        <button className="btn">Change breeds</button>
+        <button className="paw">
+          <PawIcon />
+        </button>
       </div>
-    </nav>
+    </Wrapper>
   );
 };
 export default Navbar;
+
+const Wrapper = styled.nav`
+  background-color: #fcec52;
+  .navbar-container {
+    padding: 10px 30px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  .logo {
+    font-family: "Pacifico", serif;
+    font-size: 2.4em;
+    font-weight: 300;
+    color: #3a5743;
+  }
+
+  .paw {
+    border: none;
+    background-color: #fcec52;
+    margin-bottom: -10px;
+    cursor: pointer;
+
+    transition: all 0.2s ease;
+    &:hover {
+      transform: scale(1.03);
+    }
+  }
+`;

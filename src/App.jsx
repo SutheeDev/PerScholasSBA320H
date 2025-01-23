@@ -3,6 +3,7 @@ import apiClient from "./utils/apiClient";
 import Navbar from "./components/Navbar";
 import ColumnImages from "./components/ColumnImages";
 import WelcomeText from "./components/WelcomeText";
+import styled from "styled-components";
 
 const App = () => {
   const [cats, setCats] = useState([]);
@@ -29,7 +30,7 @@ const App = () => {
   );
 
   return (
-    <main>
+    <Wrapper>
       <Navbar />
       <div className="gallery">
         <div className="gallery-container">
@@ -41,7 +42,16 @@ const App = () => {
           <WelcomeText />
         </div>
       </div>
-    </main>
+    </Wrapper>
   );
 };
 export default App;
+
+const Wrapper = styled.main`
+  width: 100vw;
+  height: 100vh;
+  overflow: hidden;
+  .columns {
+    display: flex;
+  }
+`;
