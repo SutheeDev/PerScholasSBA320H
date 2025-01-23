@@ -3,7 +3,11 @@ import { motion } from "motion/react";
 
 const Image = ({ catObj }) => {
   return (
-    <Wrapper initial={{ opacity: 0, y: 10 }} animate={{ opacity: 1, y: 0 }}>
+    <Wrapper
+      initial={{ opacity: 0, y: 20 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      transition={{ duration: 0.4 }}
+    >
       <img className="img" src={catObj.url} alt="" />
     </Wrapper>
   );
