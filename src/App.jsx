@@ -13,7 +13,6 @@ const App = () => {
       const response = await apiClient.get(
         "/images/search?size=small&mime_types=jpg&format=json&has_breeds=true&order=RANDOM&page=0&limit=16"
       );
-      console.log(response.data);
       setCats(response.data);
     } catch (error) {
       console.log({ error: error.message });
@@ -33,6 +32,7 @@ const App = () => {
   return (
     <Wrapper>
       <Navbar />
+      <WelcomeText />
       <div className="gallery">
         <div className="gallery-container">
           <div className="columns">
@@ -40,7 +40,6 @@ const App = () => {
               <ColumnImages imgGroup={imgGroup} key={index} />
             ))}
           </div>
-          <WelcomeText />
         </div>
       </div>
     </Wrapper>
@@ -50,9 +49,6 @@ export default App;
 
 const Wrapper = styled.main`
   width: 100vw;
-  height: 100vh;
-  overflow: hidden;
-  /* background-color: #cfffb3; */
   background-color: #fcec52;
 
   .gallery {
@@ -61,25 +57,15 @@ const Wrapper = styled.main`
 
   .gallery-container {
     padding: 30px 30px;
-    /* display: grid;
-    place-items: center; */
-
-    position: relative;
   }
 
   .columns {
     min-height: 90vh;
     display: flex;
+    justify-content: center;
     gap: 30px;
-    /* position: relative; */
-    position: absolute;
-    top: 30px;
-    left: 50%;
-    transform: translateX(-50%);
+    position: relative;
     z-index: 3;
-    /* background-color: red; */
-
-    /* grid-area: 1/1; */
     /* visibility: hidden; */
   }
 `;

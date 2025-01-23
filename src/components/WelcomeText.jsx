@@ -17,22 +17,19 @@ const WelcomeText = () => {
 export default WelcomeText;
 
 const Wrapper = styled.div`
-  position: absolute;
+  position: sticky;
   top: 0;
-  left: 0;
-  min-height: 90vh;
-  width: 100%;
-  /* grid-area: 1/1; */
-  /* text-align: center; */
-  margin-top: -38px;
+  min-height: 100vh;
+  width: 100vw;
+  margin-top: -12vh;
   display: flex;
   justify-content: space-between;
   align-items: center;
+  padding: 0 25px;
 
   .left-text,
   .right-text {
     display: flex;
-    /* justify-content: space-between; */
     align-items: center;
   }
 

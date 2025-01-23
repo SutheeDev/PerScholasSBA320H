@@ -1,15 +1,16 @@
 import styled from "styled-components";
+import { motion } from "motion/react";
 
 const Image = ({ catObj }) => {
   return (
-    <Wrapper>
+    <Wrapper initial={{ opacity: 0, y: 10 }} animate={{ opacity: 1, y: 0 }}>
       <img className="img" src={catObj.url} alt="" />
     </Wrapper>
   );
 };
 export default Image;
 
-const Wrapper = styled.div`
+const Wrapper = styled(motion.div)`
   .img {
     width: 100%;
     overflow: hidden;
