@@ -19,6 +19,6 @@ const Wrapper = styled.div`
     width: 250px;
     display: flex;
     flex-direction: column;
-    gap: 10px;
+    gap: 20px;
   }
 `;

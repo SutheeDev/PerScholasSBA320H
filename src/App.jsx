@@ -11,7 +11,7 @@ const App = () => {
   const fetchImages = async () => {
     try {
       const response = await apiClient.get(
-        "/images/search?size=med&mime_types=jpg&format=json&has_breeds=true&order=RANDOM&page=0&limit=40"
+        "/images/search?size=small&mime_types=jpg&format=json&has_breeds=true&order=RANDOM&page=0&limit=40"
       );
       setCats(response.data);
     } catch (error) {
@@ -50,19 +50,27 @@ export default App;
 const Wrapper = styled.main`
   width: 100vw;
   height: 100vh;
-  overflow: hidden;
+  /* overflow: hidden; */
   background-color: #cfffb3;
+
   .gallery {
-    display: grid;
-    place-items: center;
+    margin: 0 auto;
   }
 
   .gallery-container {
     padding: 0 30px;
+    display: grid;
+    place-items: center;
   }
 
   .columns {
+    height: 100vh;
     display: flex;
-    gap: 15px;
+    gap: 30px;
+    position: relative;
+    z-index: 3;
+
+    grid-area: 1/1;
+    /* visibility: hidden; */
   }
 `;
