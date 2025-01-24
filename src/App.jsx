@@ -7,21 +7,26 @@ import styled from "styled-components";
 
 const App = () => {
   const [cats, setCats] = useState([]);
+  const [page, setPage] = useState(1);
+  const [isLoading, setIsLoading] = useState(false);
 
-  const fetchImages = async () => {
+  const fetchImages = async (pageNum) => {
     try {
+      setIsLoading(true);
       const response = await apiClient.get(
         "/images/search?size=small&mime_types=jpg&format=json&has_breeds=true&order=RANDOM&page=0&limit=16"
       );
-      setCats(response.data);
+      setCats((prev) => [...prev, ...response.data]);
+      setIsLoading(false);
     } catch (error) {
       console.log({ error: error.message });
+      setIsLoading(false);
     }
   };
 
   useEffect(() => {
-    fetchImages();
-  }, []);
+    fetchImages(page);
+  }, [page]);
 
   const groupSize = 8;
   const columns = 2;
@@ -40,6 +45,7 @@ const App = () => {
               <ColumnImages imgGroup={imgGroup} key={index} />
             ))}
           </div>
+          {isLoading && <p>Loading</p>}
         </div>
       </div>
     </Wrapper>
