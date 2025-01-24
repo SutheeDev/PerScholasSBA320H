@@ -4,6 +4,7 @@ import Navbar from "./components/Navbar";
 import ColumnImages from "./components/ColumnImages";
 import WelcomeText from "./components/WelcomeText";
 import styled from "styled-components";
+import PawsLoading from "./components/PawsLoading";
 
 const App = () => {
   const [cats, setCats] = useState([]);
@@ -45,7 +46,14 @@ const App = () => {
               <ColumnImages imgGroup={imgGroup} key={index} />
             ))}
           </div>
-          {isLoading && <p>Loading</p>}
+          {isLoading && (
+            <div className="loading">
+              <p>Loading</p>
+              <PawsLoading />
+              <PawsLoading />
+              <PawsLoading />
+            </div>
+          )}
         </div>
       </div>
     </Wrapper>
@@ -73,5 +81,21 @@ const Wrapper = styled.main`
     position: relative;
     z-index: 3;
     /* visibility: hidden; */
+  }
+
+  .loading {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 40px 0;
+  }
+
+  .loading p {
+    font-family: "Pacifico", serif;
+    font-size: 1.5em;
+    font-weight: 300;
+    color: #3a5743;
+    margin-top: -10px;
+    margin-right: 10px;
   }
 `;
