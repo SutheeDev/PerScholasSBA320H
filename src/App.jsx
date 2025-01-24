@@ -119,6 +119,9 @@ const Wrapper = styled.main`
     position: relative;
     z-index: 3;
     /* visibility: hidden; */
+    @media (max-width: 895px) {
+      gap: 15px;
+    }
   }
 
   .loading {

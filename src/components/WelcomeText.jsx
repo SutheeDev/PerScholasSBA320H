@@ -26,6 +26,9 @@ const Wrapper = styled.div`
   justify-content: space-between;
   align-items: center;
   padding: 0 25px;
+  @media (max-width: 895px) {
+    display: none;
+  }
 
   .left-text,
   .right-text {
@@ -43,5 +46,6 @@ const Wrapper = styled.div`
     writing-mode: vertical-lr;
     text-orientation: upright;
     letter-spacing: -53px;
+    cursor: default;
   }
 `;

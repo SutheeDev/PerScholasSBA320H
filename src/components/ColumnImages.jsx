@@ -21,6 +21,13 @@ const Wrapper = styled.div`
     flex-direction: column;
     gap: 20px;
     margin-top: -89vh;
-    /* visibility: hidden; */
+    @media (max-width: 895px) {
+      width: 300px;
+      gap: 10px;
+      margin-top: 0vh;
+    }
+    @media (max-width: 675px) {
+      width: 100%;
+    }
   }
 `;

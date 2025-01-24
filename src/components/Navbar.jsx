@@ -16,6 +16,7 @@ const Navbar = () => {
 export default Navbar;
 
 const Wrapper = styled.nav`
+  width: 100vw;
   min-height: 10vh;
   background-color: #fcec52;
   position: sticky;
