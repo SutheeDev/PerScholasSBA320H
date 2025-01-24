@@ -21,5 +21,6 @@ const Wrapper = styled.div`
     flex-direction: column;
     gap: 20px;
     margin-top: -89vh;
+    /* visibility: hidden; */
   }
 `;

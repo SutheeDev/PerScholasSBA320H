@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 import apiClient from "./utils/apiClient";
 import Navbar from "./components/Navbar";
 import ColumnImages from "./components/ColumnImages";
@@ -11,13 +11,16 @@ const App = () => {
   const [page, setPage] = useState(1);
   const [isLoading, setIsLoading] = useState(false);
 
+  const loadingRef = useRef();
+
   const fetchImages = async (pageNum) => {
     try {
       setIsLoading(true);
       const response = await apiClient.get(
-        "/images/search?size=small&mime_types=jpg&format=json&has_breeds=true&order=RANDOM&page=0&limit=16"
+        `/images/search?size=small&mime_types=jpg&format=json&has_breeds=true&order=RANDOM&page=0&limit=16&page=${pageNum}`
       );
-      setCats((prev) => [...prev, ...response.data]);
+      const catsData = await response.data;
+      setCats((prev) => [...prev, ...catsData]);
       setIsLoading(false);
     } catch (error) {
       console.log({ error: error.message });
@@ -29,33 +32,65 @@ const App = () => {
     fetchImages(page);
   }, [page]);
 
-  const groupSize = 8;
+  useEffect(() => {
+    // Use IntersectionObserver to monitor when the loadingRef enters the viewport
+    // https://developer.mozilla.org/en-US/docs/Web/API/Intersection_Observer_API
+    const observer = new IntersectionObserver(
+      // Destructure entries which is an array of IntersectionObserverEntry object
+      ([entry]) => {
+        if (entry.isIntersecting && !isLoading) {
+          setPage((prev) => prev + 1);
+        }
+      },
+      { rootMargin: "0px" }
+    );
+
+    // Attach the IntersectionObserver to the DOM referenced by loadingRef
+    const currentRef = loadingRef.current;
+    if (currentRef) {
+      // Tell the observer to monitor the currentRef visibility
+      observer.observe(currentRef);
+    }
+
+    // Clean up the observer
+    return () => {
+      if (currentRef) {
+        observer.unobserve(currentRef);
+      }
+    };
+  }, [isLoading]);
+
+  // Divide images into 2 columns
   const columns = 2;
+  const groupSize = Math.ceil(cats.length / columns);
   const imgGroups = Array.from({ length: columns }, (_, index) =>
     cats.slice(index * groupSize, index * groupSize + groupSize)
   );
 
   return (
     <Wrapper>
-      <Navbar />
-      <WelcomeText />
-      <div className="gallery">
-        <div className="gallery-container">
-          <div className="columns">
-            {imgGroups.map((imgGroup, index) => (
-              <ColumnImages imgGroup={imgGroup} key={index} />
-            ))}
-          </div>
-          {isLoading && (
-            <div className="loading">
-              <p>Loading</p>
-              <PawsLoading />
-              <PawsLoading />
-              <PawsLoading />
+      <div className="main">
+        <Navbar />
+        <WelcomeText />
+        <div className="gallery">
+          <div className="gallery-container">
+            <div className="columns">
+              {imgGroups.map((imgGroup, index) => (
+                <ColumnImages imgGroup={imgGroup} key={index} />
+              ))}
             </div>
-          )}
+            <div ref={loadingRef}></div>
+          </div>
         </div>
       </div>
+      {isLoading && (
+        <div className="loading">
+          <p>Loading</p>
+          <PawsLoading />
+          <PawsLoading />
+          <PawsLoading />
+        </div>
+      )}
     </Wrapper>
   );
 };
@@ -64,6 +99,9 @@ export default App;
 const Wrapper = styled.main`
   width: 100vw;
   background-color: #fcec52;
+
+  display: grid;
+  place-items: center;
 
   .gallery {
     margin: 0 auto;
@@ -84,10 +122,16 @@ const Wrapper = styled.main`
   }
 
   .loading {
+    width: 100vw;
+    height: 100vh;
+    background-color: #0000003d;
     display: flex;
     justify-content: center;
     align-items: center;
-    margin: 40px 0;
+
+    position: absolute;
+    top: 0;
+    z-index: 10;
   }
 
   .loading p {
@@ -95,6 +139,7 @@ const Wrapper = styled.main`
     font-size: 1.5em;
     font-weight: 300;
     color: #3a5743;
+    color: #fcec52;
     margin-top: -10px;
     margin-right: 10px;
   }
