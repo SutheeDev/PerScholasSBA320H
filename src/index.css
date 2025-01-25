@@ -6,5 +6,9 @@
 
 html,
 body {
-  background-color: #fcec52;
+  background-color: #eaeae4;
+}
+
+body {
+  cursor: url("./assets/paw.svg"), auto;
 }

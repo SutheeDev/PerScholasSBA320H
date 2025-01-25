@@ -42,7 +42,7 @@ const Wrapper = styled.div`
     font-size: 6.3em;
     line-height: 0.8;
     z-index: 1;
-    color: #ace68a;
+    color: #c7b99c;
     writing-mode: vertical-lr;
     text-orientation: upright;
     letter-spacing: -53px;

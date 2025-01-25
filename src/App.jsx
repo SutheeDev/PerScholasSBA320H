@@ -98,7 +98,7 @@ export default App;
 
 const Wrapper = styled.main`
   width: 100vw;
-  background-color: #fcec52;
+  background-color: #eaeae4;
 
   display: grid;
   place-items: center;
@@ -118,7 +118,6 @@ const Wrapper = styled.main`
     gap: 30px;
     position: relative;
     z-index: 3;
-    /* visibility: hidden; */
     @media (max-width: 895px) {
       gap: 15px;
     }
@@ -127,7 +126,7 @@ const Wrapper = styled.main`
   .loading {
     width: 100vw;
     height: 100vh;
-    background-color: #0000003d;
+    background-color: #00000042;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -141,8 +140,7 @@ const Wrapper = styled.main`
     font-family: "Pacifico", serif;
     font-size: 1.5em;
     font-weight: 300;
-    color: #3a5743;
-    color: #fcec52;
+    color: #463403;
     margin-top: -10px;
     margin-right: 10px;
   }
