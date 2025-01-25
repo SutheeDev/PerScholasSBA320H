@@ -33,7 +33,9 @@ Welcome to SBA 320H, where I created , [Purrtraits](https://su-t-purrtraits.netl
 - New images are dynamically fetched and appended to the current display when the user reaches the bottom of the page.
 - This functionality is implemented using React hooks (`useEffect`) and `IntersectionObserver` for performance optimization.
 
-## Design Philosophy
+<br>
+
+## Design
 
 Purrtraits embraces a **minimalistic and cute aesthetic** to highlight the charm of the cat images. The layout and styling are intentionally kept simple to ensure a smooth browsing experience.
 
@@ -51,6 +53,8 @@ Purrtraits embraces a **minimalistic and cute aesthetic** to highlight the charm
 ## Acknowledgments
 
 Special thanks to [The Cat API](https://thecatapi.com) for providing the adorable cat images that make this project possible.
+
+<br>
 
 ## Feedback
 
